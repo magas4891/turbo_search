@@ -1,5 +1,5 @@
 <div id="<%= dom_id movie %>">
   <p>
-    <%=link_to movie.title, movie_path(movie) %>
+    <%=link_to movie.title, movie_path(movie), data: { turbo: false } %>
   </p>
 </div>

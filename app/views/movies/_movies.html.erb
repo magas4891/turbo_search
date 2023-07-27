@@ -1,3 +1,5 @@
 <%=turbo_frame_tag 'movies' do %>
-  <%=render movies %>
+  <%- movies.each do |mov| %>
+    <%=render 'movie', movie: mov %>
+  <% end %>
 <% end %>
