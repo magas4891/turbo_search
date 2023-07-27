@@ -1,7 +1,5 @@
 <div id="<%= dom_id movie %>">
   <p>
-    <strong>Title:</strong>
-    <%= movie.title %>
+    <%=link_to movie.title, movie_path(movie) %>
   </p>
-
 </div>

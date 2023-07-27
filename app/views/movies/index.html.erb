@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
+<%=form_with(url: movies_path, method: :get, data: { controller: 'search-form', turbo_frame: 'movies', turbo_action: 'advance' }) do |form|%>
+  <%=form.label :query %>
+  <%=form.text_field :query, data: { action: 'input->search-form#search' } %>
+  <%=form.submit 'Search' %>
+<% end %>
+
 <h1>Movies</h1>
 
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
-</div>
+<%=render 'movies', movies: @movies %>
 
 <%= link_to "New movie", new_movie_path %>

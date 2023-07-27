@@ -3,7 +3,17 @@ class MoviesController < ApplicationController
 
   # GET /movies
   def index
-    @movies = Movie.all
+    if params[:query]
+      @movies = Movie.where('title LIKE ?', "%#{params[:query]}%")
+    else
+      @movies = Movie.all
+    end
+
+    if turbo_frame_request?
+      render partial: 'movies', locals: { movies: @movies }
+    else
+      render :index
+    end
   end
 
   # GET /movies/1
